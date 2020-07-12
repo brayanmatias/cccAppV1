@@ -24,3 +24,30 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+
+
+.font-size-12px{
+    font-size: 12px;
+}
+
+
+:root {
+    --ion-color-fondo-menu: #d5b885;
+    --ion-color-fondo-menu-rgb: 213,184,133;
+    --ion-color-fondo-menu-contrast: #000000;
+    --ion-color-fondo-menu-contrast-rgb: 0,0,0;
+    --ion-color-fondo-menu-shade: #bba275;
+    --ion-color-fondo-menu-tint: #d9bf91;
+  }
+  
+  .ion-color-fondo-menu {
+    --ion-color-base: var(--ion-color-fondo-menu);
+    --ion-color-base-rgb: var(--ion-color-fondo-menu-rgb);
+    --ion-color-contrast: var(--ion-color-fondo-menu-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-fondo-menu-contrast-rgb);
+    --ion-color-shade: var(--ion-color-fondo-menu-shade);
+    --ion-color-tint: var(--ion-color-fondo-menu-tint);
+  }
+  

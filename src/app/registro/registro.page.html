@@ -1,0 +1,71 @@
+<app-header [mostrarToolBar]="true" [atras]="true" [titulo]="'Registro'" [logo]="false" [rutaRegresar]="'validar-usuario'"></app-header>
+<ion-content>
+	<ion-grid class="ion-margin-vertical">
+		<form #formularioRegistro="ngForm">
+			<ion-row>
+				<ion-col size="12">
+					<ion-item>
+						<ion-label position="floating">Número de credencial</ion-label>
+						<ion-input type="number" name="noCredencial" [(ngModel)]="usuario.NoCredencial"
+							#noCredencial="ngModel" required>
+						</ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					<ion-item>
+						<ion-label position="floating">Nombre titular</ion-label>
+						<ion-input type="text" name="nombreTitular" [(ngModel)]="usuario.NombreTitular"
+							#nombreTitular="ngModel">
+						</ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					<ion-item>
+						<ion-label position="floating">Dirección</ion-label>
+						<ion-input type="text" name="direccion" [(ngModel)]="usuario.Direccion" #direccion="ngModel">
+						</ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					<ion-item>
+						<ion-label position="floating">Ciudad</ion-label>
+						<ion-input type="text" name="ciudad" [(ngModel)]="usuario.Ciudad" #ciudad="ngModel">
+						</ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					<ion-item>
+						<ion-label position="floating">Estado</ion-label>
+						<ion-input type="text" name="estado" [(ngModel)]="usuario.Estado" #estado="ngModel">
+						</ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					<ion-item>
+						<ion-label position="floating">País</ion-label>
+						<ion-input type="text" name="pais" [(ngModel)]="usuario.Pais" #pais="ngModel">
+						</ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					<ion-button (click)="registrar()" expand="block" color="warning" shape="round"
+						[disabled]="formularioRegistro.invalid">
+						Registrar
+					</ion-button>
+				</ion-col>
+			</ion-row>
+		</form>
+	</ion-grid>
+</ion-content>

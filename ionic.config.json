@@ -1,5 +1,7 @@
 {
   "name": "cccAppV1",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
