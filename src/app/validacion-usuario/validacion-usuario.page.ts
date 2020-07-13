@@ -42,9 +42,8 @@ export class ValidacionUsuarioPage extends BaseComponent implements OnInit {
 			const data = JSON.parse(resp.data);
 			if (data.success) {
 				let idUsuario = JSON.stringify(data.IdUsuario);
-				idUsuario = idUsuario.replace('"','');
-				idUsuario = idUsuario.replace('"','');
-				
+				idUsuario = idUsuario.replace('"', '');
+				idUsuario = idUsuario.replace('"', '');
 				this.router.navigate(['registro', idUsuario]);
 			} else {
 				this.toastr.alerta('Alerta', 'Socio no encontrado');

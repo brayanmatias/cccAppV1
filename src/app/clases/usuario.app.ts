@@ -1,16 +1,13 @@
-export class UsuarioApp{
-    fecha_creacion: Date;
-    usuario_id: Number;
-    nombre: String;
-    direccion: String;
-    ciudad: String;
-    estado: String;
-    pais: String;
-    contrasena: String;
+export class UsuarioApp {
+	fechaCreacion: Date;
+	correo: string;
+	usuario: string;
+	usuarioId: number;
+	contrasena: string;
 
-    constructor(){
-        if(!this.fecha_creacion){
-            this.fecha_creacion = new Date();
-        }
-    }
+	constructor() {
+		if (!this.fechaCreacion) {
+			this.fechaCreacion = new Date();
+		}
+	}
 }

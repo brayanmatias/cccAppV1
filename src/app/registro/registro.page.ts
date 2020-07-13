@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, Injector } from '@angular/core';
 import { Crud } from '../../services/crud.service';
-import { Usuario } from '../clases/usuario';
 import { BaseComponent } from '../../utilidades/base.componet';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioApp } from '../clases/usuario.app';
@@ -22,15 +21,13 @@ export class RegistroPage extends BaseComponent implements OnInit, OnDestroy, Af
 	ngOnInit() {
 		this.nombreMetodo = 'ngOnInit';
 		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Inicializando componente...`);
-		let id = this.activatedRoute.snapshot.paramMap.get('id');
+		const id = this.activatedRoute.snapshot.paramMap.get('id');
 		this.usuario = new UsuarioApp();
-		this.usuario.usuario_id = Number(id);
+		this.usuario.usuarioId = Number(id);
 	}
 
 	onSubmit() {
 		console.log(this.usuario);
-		
-		// this.crudService.setUser('Hola');
 	}
 
 	ngAfterViewInit() {
@@ -46,8 +43,9 @@ export class RegistroPage extends BaseComponent implements OnInit, OnDestroy, Af
 	}
 
 	public async registrar() {
-		console.log(this.usuario);
-		// alert(JSON.stringify(this.usuario));
+		// alert(this.usuario);
+		// console.log(this.usuario);
+		alert(JSON.stringify(this.usuario));
 
 	}
 
