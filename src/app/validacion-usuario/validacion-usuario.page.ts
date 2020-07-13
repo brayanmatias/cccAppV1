@@ -41,7 +41,11 @@ export class ValidacionUsuarioPage extends BaseComponent implements OnInit {
 		this.crudService.validarSocio(this.socioEdicion).then(resp => {
 			const data = JSON.parse(resp.data);
 			if (data.success) {
-				this.router.navigate(['registro']);
+				let idUsuario = JSON.stringify(data.IdUsuario);
+				idUsuario = idUsuario.replace('"','');
+				idUsuario = idUsuario.replace('"','');
+				
+				this.router.navigate(['registro', idUsuario]);
 			} else {
 				this.toastr.alerta('Alerta', 'Socio no encontrado');
 			}

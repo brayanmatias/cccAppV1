@@ -13,14 +13,19 @@ const routes: Routes = [
 		loadChildren: () => import('./validacion-usuario/validacion-usuario.module').then(m => m.ValidacionUsuarioPageModule)
 	},
 	{
-		path: 'registro',
+		path: 'registro/:id',
 		loadChildren: () => import('./registro/registro.module').then(m => m.RegistroPageModule)
+	},
+	{
+		path: 'comunicados',
+		loadChildren: () => import('./comunicados/comunicados.module').then(m => m.ComunicadosPageModule)
 	},
 	{
 		path: '',
 		redirectTo: 'login',
 		pathMatch: 'full'
 	},
+
 ];
 
 @NgModule({

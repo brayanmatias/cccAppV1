@@ -2,7 +2,7 @@
 <ion-content>
 	<ion-grid class="ion-margin-vertical">
 		<form #formularioRegistro="ngForm">
-			<ion-row>
+			<!-- <ion-row>
 				<ion-col size="12">
 					<ion-item>
 						<ion-label position="floating">Número de credencial</ion-label>
@@ -11,12 +11,12 @@
 						</ion-input>
 					</ion-item>
 				</ion-col>
-			</ion-row>
+			</ion-row> -->
 			<ion-row>
 				<ion-col size="12">
 					<ion-item>
 						<ion-label position="floating">Nombre titular</ion-label>
-						<ion-input type="text" name="nombreTitular" [(ngModel)]="usuario.NombreTitular"
+						<ion-input type="text" name="nombreTitular" [(ngModel)]="usuario.nombre"
 							#nombreTitular="ngModel">
 						</ion-input>
 					</ion-item>
@@ -26,7 +26,7 @@
 				<ion-col size="12">
 					<ion-item>
 						<ion-label position="floating">Dirección</ion-label>
-						<ion-input type="text" name="direccion" [(ngModel)]="usuario.Direccion" #direccion="ngModel">
+						<ion-input type="text" name="direccion" [(ngModel)]="usuario.direccion" #direccion="ngModel">
 						</ion-input>
 					</ion-item>
 				</ion-col>
@@ -35,7 +35,7 @@
 				<ion-col size="12">
 					<ion-item>
 						<ion-label position="floating">Ciudad</ion-label>
-						<ion-input type="text" name="ciudad" [(ngModel)]="usuario.Ciudad" #ciudad="ngModel">
+						<ion-input type="text" name="ciudad" [(ngModel)]="usuario.ciudad" #ciudad="ngModel">
 						</ion-input>
 					</ion-item>
 				</ion-col>
@@ -44,7 +44,7 @@
 				<ion-col size="12">
 					<ion-item>
 						<ion-label position="floating">Estado</ion-label>
-						<ion-input type="text" name="estado" [(ngModel)]="usuario.Estado" #estado="ngModel">
+						<ion-input type="text" name="estado" [(ngModel)]="usuario.estado" #estado="ngModel">
 						</ion-input>
 					</ion-item>
 				</ion-col>
@@ -53,7 +53,7 @@
 				<ion-col size="12">
 					<ion-item>
 						<ion-label position="floating">País</ion-label>
-						<ion-input type="text" name="pais" [(ngModel)]="usuario.Pais" #pais="ngModel">
+						<ion-input type="text" name="pais" [(ngModel)]="usuario.pais" #pais="ngModel">
 						</ion-input>
 					</ion-item>
 				</ion-col>

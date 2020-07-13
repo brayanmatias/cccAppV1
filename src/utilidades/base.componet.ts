@@ -1,5 +1,5 @@
 import { Component, Injector } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Loader, Swal, Toastr, Plataforma } from 'src/services/general.service';
 import { constantes as constantesService } from './constantes';
@@ -88,6 +88,9 @@ export class BaseComponent {
 			});
 		}
 	}
+
+
+
 
 
 	/**

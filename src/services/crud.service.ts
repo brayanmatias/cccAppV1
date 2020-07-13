@@ -15,6 +15,7 @@ export class Crud {
 	getUsuarios() {
 		return this.http.get(this.api + '/usuario/usuario.php', {}, {});
 	}
+	
 
 	setUser(datos) {
 		return this.http.post(this.api + '/usuario/usuario.php', datos, this.header);

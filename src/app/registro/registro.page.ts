@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, Injector } from
 import { Crud } from '../../services/crud.service';
 import { Usuario } from '../clases/usuario';
 import { BaseComponent } from '../../utilidades/base.componet';
+import { ActivatedRoute } from '@angular/router';
+import { UsuarioApp } from '../clases/usuario.app';
 
 @Component({
 	selector: 'app-registro',
@@ -11,29 +13,30 @@ import { BaseComponent } from '../../utilidades/base.componet';
 export class RegistroPage extends BaseComponent implements OnInit, OnDestroy, AfterViewInit {
 	private nombreClase = 'RegistroPage';
 	private nombreMetodo = '';
-	public usuario: Usuario;
+	public usuario: UsuarioApp;
 	@ViewChild('formularioRegistro') formulario;
-	constructor(private injector: Injector, public crudService: Crud) {
+	constructor(private injector: Injector, public crudService: Crud, private activatedRoute: ActivatedRoute) {
 		super(injector);
 	}
 
 	ngOnInit() {
 		this.nombreMetodo = 'ngOnInit';
 		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Inicializando componente...`);
-		this.usuario = new Usuario();
-		// this.crudService.getUsuarios().then(resp => {
-		// 	const datos = JSON.parse(resp.data);
-		// 	console.log(JSON.stringify(datos));
-		// });
+		let id = this.activatedRoute.snapshot.paramMap.get('id');
+		this.usuario = new UsuarioApp();
+		this.usuario.usuario_id = Number(id);
 	}
 
 	onSubmit() {
-		this.crudService.setUser('Hola');
+		console.log(this.usuario);
+		
+		// this.crudService.setUser('Hola');
 	}
 
 	ngAfterViewInit() {
 		this.nombreMetodo = 'ngAfterViewInit';
 		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Inicializando componente...`);
+
 
 	}
 	ngOnDestroy() {
@@ -43,7 +46,8 @@ export class RegistroPage extends BaseComponent implements OnInit, OnDestroy, Af
 	}
 
 	public async registrar() {
-		alert(JSON.stringify(this.usuario));
+		console.log(this.usuario);
+		// alert(JSON.stringify(this.usuario));
 
 	}
 
