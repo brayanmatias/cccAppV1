@@ -3,7 +3,6 @@ import { Crud } from '../../services/crud.service';
 import { BaseComponent } from '../../utilidades/base.componet';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioApp } from '../clases/usuario.app';
-import Swal from 'sweetalert2'
 
 @Component({
 	selector: 'app-registro',

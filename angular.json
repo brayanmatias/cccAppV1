@@ -40,6 +40,9 @@
 							},
 							{
 								"input": "node_modules/sweetalert2/dist/sweetalert2.css"
+							},
+							{
+								"input": "node_modules/animate.css/animate.css"
 							}
 						],
 						"scripts": [
