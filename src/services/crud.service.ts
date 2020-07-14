@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Socio } from 'src/app/clases/socio';
+import { UsuarioApp } from '../app/clases/usuario.app';
 
 @Injectable()
 export class Crud {
@@ -19,6 +20,18 @@ export class Crud {
 
 	setUser(datos) {
 		return this.http.post(this.api + '/usuario/usuario.php', datos, this.header);
+	}
+
+
+	crearUsuario(usuario: UsuarioApp){
+		this.http.setDataSerializer('json');
+		return this.http.post(this.api + '/usuario/usuario-crear.php', usuario, this.header);
+	}
+
+
+	validarLogin(usuario: UsuarioApp){
+		this.http.setDataSerializer('json');
+		return this.http.post(this.api + '/usuario/usuario-crear.php', usuario, this.header);
 	}
 
 	validarSocio(socioEdicion: Socio) {

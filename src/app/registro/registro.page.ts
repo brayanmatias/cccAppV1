@@ -3,6 +3,7 @@ import { Crud } from '../../services/crud.service';
 import { BaseComponent } from '../../utilidades/base.componet';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioApp } from '../clases/usuario.app';
+import Swal from 'sweetalert2'
 
 @Component({
 	selector: 'app-registro',
@@ -43,9 +44,27 @@ export class RegistroPage extends BaseComponent implements OnInit, OnDestroy, Af
 	}
 
 	public async registrar() {
-		// alert(this.usuario);
-		// console.log(this.usuario);
-		alert(JSON.stringify(this.usuario));
+		try {
+			this.loader.abrir();
+			const { data } = await this.crudService.crearUsuario(this.usuario);
+			const resultado = JSON.parse(data);
+			if (resultado.success) {
+				this.toastr.exito('Éxito', 'Usuario registrado con éxito!');
+				this.router.navigate(['login']);
+			}
+		} catch (error) {
+			this.toastr.error('Error', 'Error al registrar el usuario!');
+		} finally{
+			this.loader.cerrar();
+		}
+
+
+		// if(resultado.includes('Duplicate entry')){
+		// 	this.swal.error('Error', 'El usuario ya está registrado');
+		// } 
+		// if(resultadoJson.success){
+
+		// }
 
 	}
 

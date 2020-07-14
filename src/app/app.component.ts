@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Platform, IonRouterOutlet } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-root',
@@ -49,7 +50,8 @@ export class AppComponent implements OnInit {
 	constructor(
 		private platform: Platform,
 		private splashScreen: SplashScreen,
-		private statusBar: StatusBar
+		private statusBar: StatusBar,
+		private router: Router
 	) {
 		this.initializeApp();
 	}
@@ -67,6 +69,10 @@ export class AppComponent implements OnInit {
 	public inicializaBotonAtras() {
 		this.platform.backButton.subscribe(() => {
 			if (!this.routerOutlet.canGoBack()) {
+				navigator['app'].exitApp();
+			}
+
+			if(this.router.url.includes('login')){
 				navigator['app'].exitApp();
 			}
 		});
