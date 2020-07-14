@@ -6,7 +6,7 @@
 				<ion-col size="12">
 					<ion-item>
 						<ion-label position="floating">Correo electronico de socio:</ion-label>
-						<ion-input name="correo" [(ngModel)]="correo" #correoInp="ngModel"
+						<ion-input name="correo" [(ngModel)]="usuario.correo" #correoInp="ngModel"
 							[pattern]="constantes.EXPRESIONES_REGULARES.CORREO" required></ion-input>
 					</ion-item>
 					<ion-label color="danger" class="ion-margin-horizontal" *ngIf="existeError(correoInp, 'required')">
@@ -21,7 +21,7 @@
 				<ion-col size="12">
 					<ion-item>
 						<ion-label position="floating">Contraseña:</ion-label>
-						<ion-input name="contrasena" type="password" [(ngModel)]="contrasena" #contrasenaInp="ngModel"
+						<ion-input name="contrasena" type="password" [(ngModel)]="usuario.contrasena" #contrasenaInp="ngModel"
 							required>
 						</ion-input>
 					</ion-item>
@@ -33,7 +33,7 @@
 		</form>
 		<ion-row>
 			<ion-col offset="1" size="10" class="ion-text-center">
-				<ion-button color="warning" shape="round" expand="full" class="ion-text-capitalize" (click)="entrar()"
+				<ion-button color="warning" shape="round" expand="full" class="ion-text-capitalize" (click)="validar()"
 					[disabled]="formularioLogin.invalid">Ingresar</ion-button>
 			</ion-col>
 		</ion-row>

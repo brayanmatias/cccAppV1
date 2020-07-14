@@ -16,22 +16,22 @@ export class Crud {
 	getUsuarios() {
 		return this.http.get(this.api + '/usuario/usuario.php', {}, {});
 	}
-	
+
 
 	setUser(datos) {
 		return this.http.post(this.api + '/usuario/usuario.php', datos, this.header);
 	}
 
 
-	crearUsuario(usuario: UsuarioApp){
+	crearUsuario(usuario: UsuarioApp) {
 		this.http.setDataSerializer('json');
 		return this.http.post(this.api + '/usuario/usuario-crear.php', usuario, this.header);
 	}
 
 
-	validarLogin(usuario: UsuarioApp){
+	validarLogin(usuario: any) {
 		this.http.setDataSerializer('json');
-		return this.http.post(this.api + '/usuario/usuario-crear.php', usuario, this.header);
+		return this.http.post(this.api + '/usuario/usuario-obtener.php', usuario, this.header);
 	}
 
 	validarSocio(socioEdicion: Socio) {

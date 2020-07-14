@@ -1,3 +1,5 @@
+import { UsuarioApp } from './../clases/usuario.app';
+import { Crud } from 'src/services/crud.service';
 import { Component, OnInit, OnDestroy, AfterViewInit, Injector } from '@angular/core';
 import { BaseComponent } from 'src/utilidades/base.componet';
 
@@ -9,11 +11,10 @@ import { BaseComponent } from 'src/utilidades/base.componet';
 export class LoginPage extends BaseComponent implements OnInit, OnDestroy, AfterViewInit {
 	private nombreClase = 'LoginPage';
 	private nombreMetodo = '';
-	public correo: string = '';
-	public contrasena: string = '';
+	public usuario: DatosLogin;
 
 
-	constructor(private injector: Injector) {
+	constructor(private injector: Injector, private crudService: Crud) {
 		super(injector);
 	}
 
@@ -62,10 +63,19 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 	/**
 	 * entrar
 	 */
-	public entrar() {
+	public async validar() {
 		this.nombreMetodo = 'entrar';
-		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Entrando...`);
-		this.router.navigate(['panel-de-control']);
+		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Validando usuario...`);
+		const { data } = await this.crudService.validarLogin(this.usuario);
+		alert(JSON.stringify(data));
+		// this.router.navigate(['panel-de-control']);
 	}
 
+}
+
+
+
+export interface DatosLogin {
+	correo: string;
+	contrasena: string;
 }
