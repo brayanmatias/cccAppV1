@@ -21,6 +21,12 @@ const routes: Routes = [
 		loadChildren: () => import('./comunicados/comunicados.module').then(m => m.ComunicadosPageModule)
 	},
 	{
+		path: 'inicio',
+		// canActivate: isAute,
+		loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioPageModule)
+	},
+
+	{
 		path: '',
 		redirectTo: 'login',
 		pathMatch: 'full'

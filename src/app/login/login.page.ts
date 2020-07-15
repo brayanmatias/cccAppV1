@@ -1,8 +1,8 @@
-import { UsuarioApp } from './../clases/usuario.app';
 import { Crud } from 'src/services/crud.service';
 import { Component, OnInit, OnDestroy, AfterViewInit, Injector } from '@angular/core';
 import { BaseComponent } from 'src/utilidades/base.componet';
 import { Validaciones } from 'src/utilidades/validaciones';
+import { AutenticacionService } from 'src/services/autenticacion.service';
 
 @Component({
 	selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 	public usuario: DatosLogin;
 
 
-	constructor(private injector: Injector, private crudService: Crud) {
+	constructor(private injector: Injector, private crudService: Crud, private autenticatioService: AutenticacionService) {
 		super(injector);
 	}
 
@@ -68,9 +68,21 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 	public async validar() {
 		this.nombreMetodo = 'entrar';
 		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Validando usuario...`);
-		const { data } = await this.crudService.validarLogin(this.usuario);
-		alert(JSON.stringify(data));
-		// this.router.navigate(['panel-de-control']);
+		try {
+			this.loader.abrir();
+			const { data } = await this.crudService.validarLogin(this.usuario);
+			const respuesta = JSON.parse(data);
+			if (respuesta.valido) {
+				this.autenticatioService.login(respuesta.usuario);
+				this.router.navigate(['inicio']);
+			} else {
+				this.swal.error('Error', 'Datos de usuario incorrectos');
+			}
+		} catch (error) {
+			this.toastr.error('Error', 'Datos incorrectos');
+		} finally {
+			this.loader.cerrar();
+		}
 	}
 
 }
@@ -80,20 +92,6 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 export class DatosLogin {
 	correo: string;
 	contrasena: string;
-
-	// constructor() {
-	// 	if (this.correo) {
-	// 		this.correo = this.correo;
-	// 	} else {
-	// 		this.correo = '';
-	// 	}
-	// 	if (this.contrasena) {
-	// 		this.contrasena = this.contrasena;
-	// 	} else {
-	// 		this.contrasena = '';
-	// 	}
-	// }
-
 
 	constructor(objeto?: any) {
 		if (!objeto) {
