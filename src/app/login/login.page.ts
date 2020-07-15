@@ -2,6 +2,7 @@ import { UsuarioApp } from './../clases/usuario.app';
 import { Crud } from 'src/services/crud.service';
 import { Component, OnInit, OnDestroy, AfterViewInit, Injector } from '@angular/core';
 import { BaseComponent } from 'src/utilidades/base.componet';
+import { Validaciones } from 'src/utilidades/validaciones';
 
 @Component({
 	selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 	ngOnInit() {
 		this.nombreMetodo = 'ngOnInit';
 		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Inicializando componente...`);
+		this.usuario = new DatosLogin();
 	}
 
 	ionViewWillEnter() {
@@ -75,7 +77,31 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 
 
 
-export interface DatosLogin {
+export class DatosLogin {
 	correo: string;
 	contrasena: string;
+
+	// constructor() {
+	// 	if (this.correo) {
+	// 		this.correo = this.correo;
+	// 	} else {
+	// 		this.correo = '';
+	// 	}
+	// 	if (this.contrasena) {
+	// 		this.contrasena = this.contrasena;
+	// 	} else {
+	// 		this.contrasena = '';
+	// 	}
+	// }
+
+
+	constructor(objeto?: any) {
+		if (!objeto) {
+			objeto = {};
+		}
+		// tslint:disable-next-line: max-line-length
+		if (objeto.hasOwnProperty('correo') && Validaciones.noNuloNoVacio(objeto.nombre)) { this.correo = new String(objeto.correo).valueOf(); } else { this.correo = null; }
+		// tslint:disable-next-line: max-line-length
+		if (objeto.hasOwnProperty('contrasena') && Validaciones.noNuloNoVacio(objeto.contrasena)) { this.contrasena = new String(objeto.contrasena).valueOf(); } else { this.contrasena = null; }
+	}
 }
