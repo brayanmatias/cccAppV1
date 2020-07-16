@@ -1,9 +1,15 @@
 <ion-app>
 	<ion-split-pane contentId="main-content">
 		<ion-menu contentId="main-content" type="overlay">
+
+			<ion-header>
+				<ion-toolbar color="fondo-menu" class="toolbar">
+					<ion-img src="./assets/images/logo_ccc.png" class="imagen_logo_menu"></ion-img>
+				</ion-toolbar>
+			</ion-header>
 			<ion-content>
-				<ion-list id="inbox-list">
-					<ion-list-header>Inbox</ion-list-header>
+				<ion-list id="listaMenu">
+					<ion-list-header>¡Bienvenido!</ion-list-header>
 					<ion-note>hi@ionicframework.com</ion-note>
 
 					<ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">

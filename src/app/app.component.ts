@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Storage as storage } from '@ionic/storage';
 import { Platform, IonRouterOutlet } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
 	constructor(
 		private platform: Platform,
 		private splashScreen: SplashScreen,
+		// private storage: Storage,
 		private statusBar: StatusBar,
 		private router: Router
 	) {

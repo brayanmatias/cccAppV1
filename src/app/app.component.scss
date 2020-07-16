@@ -117,3 +117,38 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+.triangulo-equilatero-bottom-left-amarillo {
+  width: 50vw;
+  height: 20vh;
+  border-right: 50px solid transparent;
+  border-top: 20vh solid transparent;
+  border-left: 70vw solid #ffaa00;
+  border-bottom: 50px solid #ffaa00;
+  position: relative;
+  z-index: 1;
+  top: 5vh;
+}
+
+.triangulo-equilatero-bottom-left-cafe {
+  width: 50vw;
+  height: 20vh;
+  border-right: 50px solid transparent;
+  border-top: 20vh solid transparent;
+  border-left: 70vw solid #8f5a00;
+  border-bottom: 50px solid #8f5a00;
+  position: absolute;
+  z-index: 2;
+  top: 8vh;
+}
+
+.imagen_logo_menu{
+  width: 150px;
+  height: auto;
+  margin: auto
+}
+
+.toolbar{
+  width: 305px !important;
+  height: 210px !important;
+}
