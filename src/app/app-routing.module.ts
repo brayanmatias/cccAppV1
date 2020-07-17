@@ -1,7 +1,6 @@
-import { ValidacionUsuarioPageModule } from './validacion-usuario/validacion-usuario.module';
-import { LoginPageModule } from './login/login.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AutenticacionService } from '../services/autenticacion.service';
 
 const routes: Routes = [
 	{
@@ -28,13 +27,11 @@ const routes: Routes = [
 		path: 'reservaciones',
 		loadChildren: () => import('./reservaciones/reservaciones.module').then( m => m.ReservacionesPageModule)
 	},
+  {
+    path: 'recuperar-contrasena',
+    loadChildren: () => import('./recuperar-contrasena/recuperar-contrasena.module').then( m => m.RecuperarContrasenaPageModule)
+  },
 
-
-	// {
-	// 	path: '',
-	// 	redirectTo: 'login',
-	// 	pathMatch: 'full'
-	// },
 
 ];
 

@@ -50,7 +50,6 @@ export class AppComponent implements OnInit {
 	constructor(
 		private platform: Platform,
 		private splashScreen: SplashScreen,
-		// private storage: Storage,
 		private statusBar: StatusBar,
 		private router: Router,
 		private autenticatioService: AutenticacionService,
@@ -63,14 +62,14 @@ export class AppComponent implements OnInit {
 			this.statusBar.styleDefault();
 			this.splashScreen.hide();
 
-			const isLoggeIn = await this.autenticatioService.isAutenticated();
-			if (isLoggeIn) {
-				const user = await this.autenticatioService.getCurrentUser();
-				this.email = user.email;
-				this.router.navigate(['inicio']);
-			} else {
-				this.router.navigate(['login']);
-			}
+			// const isLoggeIn = await this.autenticatioService.isAutenticated();
+			// if (isLoggeIn) {
+			// 	const user = await this.autenticatioService.getCurrentUser();
+			// 	this.email = user.email;
+			// 	this.router.navigate(['inicio']);
+			// } else {
+			// 	this.router.navigate(['login']);
+			// }
 		});
 	}
 
