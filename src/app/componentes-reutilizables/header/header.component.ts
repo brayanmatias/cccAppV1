@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 		this.mostrarToolBar = false;
 		this.menu = false;
 		this.atras = false;
-		this.logo = true;
+		this.logo = false;
 	}
 
 	ngOnInit() {

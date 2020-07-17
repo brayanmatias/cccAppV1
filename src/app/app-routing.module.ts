@@ -22,7 +22,6 @@ const routes: Routes = [
 	},
 	{
 		path: 'inicio',
-		// canActivate: isAute,
 		loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioPageModule)
 	},
 	{

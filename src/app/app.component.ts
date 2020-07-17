@@ -40,6 +40,11 @@ export class AppComponent implements OnInit {
 			title: 'Perfil Socio',
 			url: '/user',
 			icon: 'person-circle'
+		},
+		{
+			title: 'Cerrar sesión',
+			url: '/login',
+			icon: 'exit'
 		}
 	];
 	constructor(

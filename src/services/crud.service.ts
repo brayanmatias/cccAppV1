@@ -42,4 +42,14 @@ export class Crud {
 	getComunicados() {
 		return this.http.get(this.api + '/comunicados/obtenerComunicados.php', {}, {});
 	}
+
+
+	getAreas() {
+		return this.http.get(this.api + '/reservaciones/obtener-areas.php', {}, {});
+	}
+
+
+	getHorarios(idArea: Number, dia: string) {
+		return this.http.get(this.api + '/reservaciones/obtener-horarios.php?id=' + idArea + '&dia=' + dia, {}, {});
+	}
 }

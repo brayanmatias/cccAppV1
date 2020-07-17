@@ -23,6 +23,7 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 	ngOnInit() {
 		this.nombreMetodo = 'ngOnInit';
 		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Inicializando componente...`);
+		this.autenticatioService.logout();
 		this.usuario = new DatosLogin();
 	}
 
@@ -71,6 +72,7 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 		try {
 			this.loader.abrir();
 			const { data } = await this.crudService.validarLogin(this.usuario);
+			// alert(JSON.stringify(data));
 			const respuesta = JSON.parse(data);
 			if (respuesta.valido) {
 				this.autenticatioService.login(respuesta.usuario);
