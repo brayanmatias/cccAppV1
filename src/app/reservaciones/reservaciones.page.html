@@ -1,0 +1,48 @@
+<app-header [logo]="true" [menu]="true" [mostrarToolBar]="true" [titulo]="'Comunicados'"></app-header>
+
+<ion-content>
+  <form #formularioReservaciones="ngForm">
+    <ion-item>
+      <ion-label>Selecciona el area</ion-label>
+      <!-- [value]="peperoni" -->
+      <ion-select  placeholder="Selecciona un area" (ionChange)="changeArea($event)">
+        <ion-select-option value="golf">Golf</ion-select-option>
+        <ion-select-option value="tenis">Tenis</ion-select-option>
+        <ion-select-option value="alberca">Alberca</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <section id="golf" *ngIf="area == 'golf'">
+      <ion-item>
+        <ion-label>Selecciona el dia</ion-label>
+        <ion-select  placeholder="Selecciona el dia">
+          <ion-select-option value="lunes">Lunes</ion-select-option>
+          <ion-select-option value="martes">Martes</ion-select-option>
+          <ion-select-option value="miercoles">Miercoles</ion-select-option>
+          <ion-select-option value="jueves">Jueves</ion-select-option>
+          <ion-select-option value="viernes">Viernes</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Selecciona el horario</ion-label>
+        <ion-select  placeholder="Selecciona el dia">
+          <ion-select-option value="lunes">Horario 1 7:00</ion-select-option>
+          <ion-select-option value="martes">Horario 2 7:15</ion-select-option>
+          <ion-select-option value="miercoles">Horario 3 7:30</ion-select-option>
+          <ion-select-option value="jueves">Horario 4 7:45</ion-select-option>
+          <ion-select-option value="viernes">Horario 5 8:00</ion-select-option>
+        </ion-select>
+      </ion-item>
+     
+    </section>
+
+    <section id="tenis">
+
+    </section>
+
+    <section id="alberca">
+
+    </section>
+  </form>
+</ion-content>

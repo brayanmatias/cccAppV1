@@ -25,6 +25,11 @@ const routes: Routes = [
 		// canActivate: isAute,
 		loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioPageModule)
 	},
+	{
+		path: 'reservaciones',
+		loadChildren: () => import('./reservaciones/reservaciones.module').then( m => m.ReservacionesPageModule)
+	},
+
 
 	// {
 	// 	path: '',
