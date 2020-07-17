@@ -5,13 +5,12 @@
 			<ion-header>
 				<ion-toolbar color="fondo-menu" class="toolbar">
 					<ion-img src="./assets/images/logo_ccc.png" class="imagen_logo_menu"></ion-img>
+					<ion-list-header>¡Bienvenido!</ion-list-header>
+					<ion-note>{{email}}</ion-note>
 				</ion-toolbar>
 			</ion-header>
 			<ion-content>
 				<ion-list id="listaMenu">
-					<ion-list-header>¡Bienvenido!</ion-list-header>
-					<ion-note>hi@ionicframework.com</ion-note>
-
 					<ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
 						<ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
 							detail="false" [class.selected]="selectedIndex == i">
@@ -19,15 +18,6 @@
 							<ion-label>{{ p.title }}</ion-label>
 						</ion-item>
 					</ion-menu-toggle>
-				</ion-list>
-
-				<ion-list id="labels-list">
-					<ion-list-header>Labels</ion-list-header>
-
-					<ion-item *ngFor="let label of labels" lines="none">
-						<ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-						<ion-label>{{ label }}</ion-label>
-					</ion-item>
 				</ion-list>
 			</ion-content>
 		</ion-menu>

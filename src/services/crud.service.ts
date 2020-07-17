@@ -38,4 +38,8 @@ export class Crud {
 		this.http.setDataSerializer('json');
 		return this.http.post(this.api + '/socio/validarSocio.php', socioEdicion, this.header);
 	}
+
+	getComunicados() {
+		return this.http.get(this.api + '/comunicados/obtenerComunicados.php', {}, {});
+	}
 }

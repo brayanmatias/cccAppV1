@@ -11,23 +11,25 @@ const TOKEN_KEY = 'auth-token';
 })
 export class AutenticacionService {
 
-	autenticationState = new BehaviorSubject(false);
-
 	constructor(private storage: Storage) {
 	}
 
 
 	async login(usuario: any) {
 		await this.storage.set(TOKEN_KEY, usuario);
-		this.autenticationState.next(true);
+		await this.storage.set('isLoggedIn', true);
+	}
+
+	async getCurrentUser() {
+		return this.storage.get(TOKEN_KEY);;
 	}
 
 	logout() {
 		this.storage.remove(TOKEN_KEY);
-		this.autenticationState.next(false);
+		this.storage.remove('isLoggedIn');
 	}
 
 	isAutenticated() {
-		return this.autenticationState.value;
+		return this.storage.get('isLoggedIn');
 	}
 }

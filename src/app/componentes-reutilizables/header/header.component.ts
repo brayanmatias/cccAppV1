@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AutenticacionService } from '../../../services/autenticacion.service';
 
 @Component({
 	selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
 	@Input() logo: boolean;
 	@Input() rutaRegresar: string;
 
-	constructor() {
+	constructor(private autenticatioService: AutenticacionService) {
 		this.titulo = '';
 		this.rutaRegresar = 'login';
 		this.mostrarToolBar = false;
@@ -25,4 +26,8 @@ export class HeaderComponent implements OnInit {
 
 	}
 
+	// async onClick() {
+	// 	const user = await this.autenticatioService.getCurrentUser();
+	// 	alert(JSON.stringify(user));
+	// }
 }
