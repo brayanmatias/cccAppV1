@@ -15,20 +15,28 @@ export class AutenticacionService {
 
 
 	async login(usuario: any) {
-		await this.storage.set(TOKEN_KEY, usuario);
-		await this.storage.set('isLoggedIn', true);
+		await Promise.all([
+			this.storage.set(TOKEN_KEY, usuario),
+			this.storage.set('isLoggedIn', true)
+		]);
 	}
 
 	async getCurrentUser() {
-		return this.storage.get(TOKEN_KEY);;
+		return await this.storage.get(TOKEN_KEY);;
 	}
 
-	logout() {
-		this.storage.remove(TOKEN_KEY);
-		this.storage.remove('isLoggedIn');
+	async logout() {
+		await Promise.all([
+			this.storage.remove(TOKEN_KEY),
+			this.storage.remove('isLoggedIn')
+		]);
 	}
 
-	isAutenticated() {
-		return this.storage.get('isLoggedIn');
-	}
+	// isAutenticated(): boolean {
+	// 	if (this.storage.get('isLoggedIn')) {
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// }
 }

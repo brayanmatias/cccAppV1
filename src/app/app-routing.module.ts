@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AutenticacionService } from '../services/autenticacion.service';
+import { AuthGuardService } from 'src/services/auth-guard.service';
 
 const routes: Routes = [
 	{
@@ -21,16 +21,22 @@ const routes: Routes = [
 	},
 	{
 		path: 'inicio',
+		canActivate:[AuthGuardService],
 		loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioPageModule)
 	},
 	{
 		path: 'reservaciones',
-		loadChildren: () => import('./reservaciones/reservaciones.module').then( m => m.ReservacionesPageModule)
+		loadChildren: () => import('./reservaciones/reservaciones.module').then(m => m.ReservacionesPageModule)
 	},
-  {
-    path: 'recuperar-contrasena',
-    loadChildren: () => import('./recuperar-contrasena/recuperar-contrasena.module').then( m => m.RecuperarContrasenaPageModule)
-  },
+	{
+		path: 'recuperar-contrasena',
+		loadChildren: () => import('./recuperar-contrasena/recuperar-contrasena.module').then(m => m.RecuperarContrasenaPageModule)
+	},
+	{
+		path: '',
+		redirectTo: 'login',
+		pathMatch: 'full'
+	}
 
 
 ];

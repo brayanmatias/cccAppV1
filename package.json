@@ -1,7 +1,7 @@
 {
   "name": "cccAppV1",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Native DevOs",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
@@ -78,7 +78,8 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-sqlite-storage": {}
     },
     "platforms": [
       "android",

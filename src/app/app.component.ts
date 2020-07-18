@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Storage as storage } from '@ionic/storage';
+import { Component, OnInit } from '@angular/core';
 import { Platform, IonRouterOutlet } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { AutenticacionService } from '../services/autenticacion.service';
+
 
 @Component({
 	selector: 'app-root',
@@ -12,8 +12,8 @@ import { AutenticacionService } from '../services/autenticacion.service';
 	styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-	@ViewChild(IonRouterOutlet, { static: true }) routerOutlet: IonRouterOutlet;
 	public selectedIndex = 0;
+	private routerOutlet: IonRouterOutlet;
 	public email: string;
 	public appPages = [
 		{
@@ -55,36 +55,20 @@ export class AppComponent implements OnInit {
 		private autenticatioService: AutenticacionService,
 	) {
 		this.initializeApp();
+		this.platform.backButton.subscribeWithPriority(-1, () => {
+			if (!this.routerOutlet.canGoBack()) {
+				navigator['app'].exitApp();
+			}
+		});
+		this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
+			processNextHandler();
+		  });
 	}
 
 	initializeApp() {
 		this.platform.ready().then(async () => {
 			this.statusBar.styleDefault();
 			this.splashScreen.hide();
-
-			// const isLoggeIn = await this.autenticatioService.isAutenticated();
-			// if (isLoggeIn) {
-			// 	const user = await this.autenticatioService.getCurrentUser();
-			// 	this.email = user.email;
-			// 	this.router.navigate(['inicio']);
-			// } else {
-			// 	this.router.navigate(['login']);
-			// }
-		});
-	}
-
-	/**
- * inicializaBotonAtras
- */
-	public inicializaBotonAtras() {
-		this.platform.backButton.subscribe(() => {
-			if (!this.routerOutlet.canGoBack()) {
-				navigator['app'].exitApp();
-			}
-
-			if(this.router.url.includes('login')){
-				navigator['app'].exitApp();
-			}
 		});
 	}
 

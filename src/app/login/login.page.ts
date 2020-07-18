@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit, Injector } from '@angular/
 import { BaseComponent } from 'src/utilidades/base.componet';
 import { Validaciones } from 'src/utilidades/validaciones';
 import { AutenticacionService } from 'src/services/autenticacion.service';
+import { Storage } from '@ionic/storage'
 
 @Component({
 	selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 	public usuario: DatosLogin;
 
 
-	constructor(private injector: Injector, private crudService: Crud, private autenticatioService: AutenticacionService) {
+	constructor(private injector: Injector, private crudService: Crud, private autenticatioService: AutenticacionService, private storage: Storage) {
 		super(injector);
 	}
 
@@ -29,6 +30,12 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 
 	ionViewWillEnter() {
 		this.menu.enable(false);
+		let logeado = this.storage.get('isLoggedIn');
+		if (logeado) {
+			this.router.navigate(['inicio']);
+		} else {
+			this.router.navigate(['login']);
+		}
 	}
 
 
