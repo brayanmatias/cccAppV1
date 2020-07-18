@@ -32,11 +32,7 @@ export class AutenticacionService {
 		]);
 	}
 
-	// isAutenticated(): boolean {
-	// 	if (this.storage.get('isLoggedIn')) {
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
+	isAutenticated(): boolean {
+		return this.storage.get('isLoggedIn') ? true : false;
+	}
 }

@@ -1,19 +1,21 @@
 import { Crud } from 'src/services/crud.service';
-import { Component, OnInit, OnDestroy, AfterViewInit, Injector } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, Injector, ViewChild } from '@angular/core';
 import { BaseComponent } from 'src/utilidades/base.componet';
 import { Validaciones } from 'src/utilidades/validaciones';
 import { AutenticacionService } from 'src/services/autenticacion.service';
 import { Storage } from '@ionic/storage'
+import { NgForm } from '@angular/forms';
 
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.page.html',
 	styleUrls: ['./login.page.scss'],
 })
-export class LoginPage extends BaseComponent implements OnInit, OnDestroy, AfterViewInit {
+export class LoginPage extends BaseComponent implements OnInit, AfterViewInit {
 	private nombreClase = 'LoginPage';
 	private nombreMetodo = '';
 	public usuario: DatosLogin;
+	@ViewChild('formularioLogin') formularioLogin: NgForm;
 
 
 	constructor(private injector: Injector, private crudService: Crud, private autenticatioService: AutenticacionService, private storage: Storage) {
@@ -24,7 +26,6 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 	ngOnInit() {
 		this.nombreMetodo = 'ngOnInit';
 		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Inicializando componente...`);
-		this.autenticatioService.logout();
 		this.usuario = new DatosLogin();
 	}
 
@@ -44,10 +45,9 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Inicializando componente...`);
 
 	}
-	ngOnDestroy() {
-		this.nombreMetodo = 'ngOnDestroy';
-		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Destruyendo componente...`);
 
+	ionViewDidLeave() {
+		this.formularioLogin.resetForm();
 	}
 
 

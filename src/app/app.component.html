@@ -19,6 +19,11 @@
 							<ion-label>{{ page.title }}</ion-label>
 						</ion-item>
 					</ion-menu-toggle>
+					<ion-item lines="none" detail="false" (click)="logOut()">
+						<ion-icon slot="start" [ios]="'exit-outline'" [md]="'exit-sharp'">
+						</ion-icon>
+						<ion-label>Cerrar sesión</ion-label>
+					</ion-item>
 				</ion-list>
 			</ion-content>
 		</ion-menu>
