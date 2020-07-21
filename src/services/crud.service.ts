@@ -1,3 +1,4 @@
+import { FechaDate } from './../utilidades/fechas';
 
 import { Injectable } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
@@ -51,5 +52,13 @@ export class Crud {
 
 	getHorarios(idArea: Number, dia: string) {
 		return this.http.get(this.api + '/reservaciones/obtener-horarios.php?id=' + idArea + '&dia=' + dia, {}, {});
+	}
+
+
+	getIngresos(usuarioId: string) {
+		const fechaFin = FechaDate.fechaString(new Date());
+		const fechaInicio = FechaDate.fechaString(FechaDate.restaDias(new Date(), 7));
+		// tslint:disable-next-line: max-line-length
+		return this.http.get(this.api + '/ingresos/obtener-ingresos.php?id=' + usuarioId + '&fechaInicio=' + fechaInicio + '&fechaFin=' + fechaFin, {}, {});
 	}
 }

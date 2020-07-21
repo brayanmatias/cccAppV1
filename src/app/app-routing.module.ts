@@ -20,8 +20,12 @@ const routes: Routes = [
 		loadChildren: () => import('./comunicados/comunicados.module').then(m => m.ComunicadosPageModule)
 	},
 	{
+		path: 'ingresos',
+		loadChildren: () => import('./ingresos/ingresos.module').then(m => m.IngresosPageModule)
+	},
+	{
 		path: 'inicio',
-		canActivate:[AuthGuardService],
+		canActivate: [AuthGuardService],
 		loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioPageModule)
 	},
 	{
@@ -37,6 +41,7 @@ const routes: Routes = [
 		redirectTo: 'login',
 		pathMatch: 'full'
 	}
+
 
 
 ];

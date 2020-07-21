@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 
@@ -9,6 +9,7 @@ const TOKEN_KEY = 'auth-token';
 	providedIn: 'root'
 })
 export class AutenticacionService {
+	public usuarioEmmiter = new EventEmitter<any>();
 
 	constructor(private storage: Storage) {
 	}
@@ -22,7 +23,7 @@ export class AutenticacionService {
 	}
 
 	async getCurrentUser() {
-		return await this.storage.get(TOKEN_KEY);;
+		return await this.storage.get(TOKEN_KEY);
 	}
 
 	async logout() {

@@ -1,10 +1,11 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, EventEmitter } from '@angular/core';
 import { Platform, IonRouterOutlet, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { AutenticacionService } from '../services/autenticacion.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit, AfterViewInit {
 	public selectedIndex = 0;
 	private routerOutlet: IonRouterOutlet;
+	public usuarioSuscripcion: Subscription;
 	public email: string;
 	public appPages = [
 		{
@@ -81,13 +83,18 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 	async ngAfterViewInit() {
 		if (this.authService.isAutenticated()) {
-			const usuario = await this.authService.getCurrentUser();
-			this.email = usuario.email;
+			this.usuarioSuscripcion = this.authService.usuarioEmmiter.subscribe((usuario) => {
+				this.email = usuario.email;
+			});
 		}
 	}
 
 	public logOut() {
 		this.confirmarLogOut();
+	}
+
+	async ngOnDestroy() {
+		this.usuarioSuscripcion.unsubscribe();
 	}
 
 
