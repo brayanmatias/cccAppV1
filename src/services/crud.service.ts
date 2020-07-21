@@ -61,4 +61,9 @@ export class Crud {
 		// tslint:disable-next-line: max-line-length
 		return this.http.get(this.api + '/ingresos/obtener-ingresos.php?id=' + usuarioId + '&fechaInicio=' + fechaInicio + '&fechaFin=' + fechaFin, {}, {});
 	}
+
+
+	getPerfilSocio(usuarioId: string) {
+		return this.http.get(this.api + '/socio/obtener-perfil-socio.php?id=' + usuarioId, {}, {});
+	}
 }

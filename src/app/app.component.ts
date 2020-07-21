@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 		},
 		{
 			title: 'Perfil Socio',
-			url: '/user',
+			url: '/perfil-socio',
 			icon: 'person-circle'
 		}
 	];

@@ -40,6 +40,10 @@ const routes: Routes = [
 		path: '',
 		redirectTo: 'login',
 		pathMatch: 'full'
+	},
+	{
+		path: 'perfil-socio',
+		loadChildren: () => import('./perfil-socio/perfil-socio.module').then(m => m.PerfilSocioPageModule)
 	}
 
 
