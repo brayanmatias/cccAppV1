@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Crud } from 'src/services/crud.service';
 import { IonicStorageModule } from '@ionic/storage';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -32,7 +31,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 		Plataforma,
 		Toastr,
 		Crud,
-		InAppBrowser,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 	],
 	bootstrap: [AppComponent]
