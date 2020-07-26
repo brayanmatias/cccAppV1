@@ -27,8 +27,17 @@ const routes: Routes = [
 	},
 	{
 		path: 'reservaciones',
-		loadChildren: () => import('./reservaciones/reservaciones.module').then( m => m.ReservacionesPageModule)
+		loadChildren: () => import('./reservaciones/reservaciones.module').then(m => m.ReservacionesPageModule)
 	},
+	{
+		path: 'detalle-comunicado',
+		loadChildren: () => import('./detalle-comunicado/detalle-comunicado.module').then(m => m.DetalleComunicadoPageModule)
+	},
+	{
+		path: 'albercas',
+		loadChildren: () => import('./albercas/albercas.module').then(m => m.AlbercasPageModule)
+	},
+
 
 
 	// {

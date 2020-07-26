@@ -42,4 +42,8 @@ export class Crud {
 	getComunicados() {
 		return this.http.get(this.api + '/comunicados/obtenerComunicados.php', {}, {});
 	}
+
+	getTemperaturas() {
+		return this.http.get(this.api + '/albercas/obtenerTemperaturas.php', {}, {});
+	}
 }
