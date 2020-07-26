@@ -1,21 +1,24 @@
 import { Crud } from 'src/services/crud.service';
-import { Component, OnInit, OnDestroy, AfterViewInit, Injector } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, Injector, ViewChild } from '@angular/core';
 import { BaseComponent } from 'src/utilidades/base.componet';
 import { Validaciones } from 'src/utilidades/validaciones';
 import { AutenticacionService } from 'src/services/autenticacion.service';
+import { Storage } from '@ionic/storage'
+import { NgForm } from '@angular/forms';
 
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.page.html',
 	styleUrls: ['./login.page.scss'],
 })
-export class LoginPage extends BaseComponent implements OnInit, OnDestroy, AfterViewInit {
+export class LoginPage extends BaseComponent implements OnInit, AfterViewInit {
 	private nombreClase = 'LoginPage';
 	private nombreMetodo = '';
 	public usuario: DatosLogin;
+	@ViewChild('formularioLogin') formularioLogin: NgForm;
 
 
-	constructor(private injector: Injector, private crudService: Crud, private autenticatioService: AutenticacionService) {
+	constructor(private injector: Injector, private crudService: Crud, private autenticatioService: AutenticacionService, private storage: Storage) {
 		super(injector);
 	}
 
@@ -28,6 +31,12 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 
 	ionViewWillEnter() {
 		this.menu.enable(false);
+		let logeado = this.storage.get('isLoggedIn');
+		if (logeado) {
+			this.router.navigate(['inicio']);
+		} else {
+			this.router.navigate(['login']);
+		}
 	}
 
 
@@ -36,10 +45,9 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Inicializando componente...`);
 
 	}
-	ngOnDestroy() {
-		this.nombreMetodo = 'ngOnDestroy';
-		console.log(`[${this.nombreClase}][${this.nombreMetodo}] Destruyendo componente...`);
 
+	ionViewDidLeave() {
+		this.formularioLogin.resetForm();
 	}
 
 
@@ -71,6 +79,7 @@ export class LoginPage extends BaseComponent implements OnInit, OnDestroy, After
 		try {
 			this.loader.abrir();
 			const { data } = await this.crudService.validarLogin(this.usuario);
+			// alert(JSON.stringify(data));
 			const respuesta = JSON.parse(data);
 			if (respuesta.valido) {
 				this.autenticatioService.login(respuesta.usuario);

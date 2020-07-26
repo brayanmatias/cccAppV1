@@ -1,19 +1,22 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Storage as storage } from '@ionic/storage';
-import { Platform, IonRouterOutlet } from '@ionic/angular';
+import { Component, OnInit, AfterViewInit, EventEmitter } from '@angular/core';
+import { Platform, IonRouterOutlet, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Router } from '@angular/router';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { AutenticacionService } from '../services/autenticacion.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 
 @Component({
 	selector: 'app-root',
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.scss']
 })
-export class AppComponent implements OnInit {
-	@ViewChild(IonRouterOutlet, { static: true }) routerOutlet: IonRouterOutlet;
+export class AppComponent implements OnInit, AfterViewInit {
 	public selectedIndex = 0;
+	private routerOutlet: IonRouterOutlet;
+	public usuarioSuscripcion: Subscription;
 	public email: string;
 	public appPages = [
 		{
@@ -43,49 +46,35 @@ export class AppComponent implements OnInit {
 		},
 		{
 			title: 'Perfil Socio',
-			url: '/user',
+			url: '/perfil-socio',
 			icon: 'person-circle'
 		}
 	];
 	constructor(
 		private platform: Platform,
 		private splashScreen: SplashScreen,
-		// private storage: Storage,
 		private statusBar: StatusBar,
-		private router: Router,
-		private autenticatioService: AutenticacionService,
+		private screenOrientation: ScreenOrientation,
+		private alertController: AlertController,
+		private authService: AutenticacionService,
+		private router: Router
 	) {
 		this.initializeApp();
+		this.platform.backButton.subscribeWithPriority(-1, () => {
+			if (!this.routerOutlet.canGoBack()) {
+				navigator['app'].exitApp();
+			}
+		});
+		this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
+			processNextHandler();
+		});
 	}
 
 	initializeApp() {
 		this.platform.ready().then(async () => {
+			this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 			this.statusBar.styleDefault();
 			this.splashScreen.hide();
-
-			const isLoggeIn = await this.autenticatioService.isAutenticated();
-			if (isLoggeIn) {
-				const user = await this.autenticatioService.getCurrentUser();
-				this.email = user.email;
-				this.router.navigate(['inicio']);
-			} else {
-				this.router.navigate(['login']);
-			}
-		});
-	}
-
-	/**
- * inicializaBotonAtras
- */
-	public inicializaBotonAtras() {
-		this.platform.backButton.subscribe(() => {
-			if (!this.routerOutlet.canGoBack()) {
-				navigator['app'].exitApp();
-			}
-
-			if(this.router.url.includes('login')){
-				navigator['app'].exitApp();
-			}
 		});
 	}
 
@@ -95,5 +84,47 @@ export class AppComponent implements OnInit {
 		if (path !== undefined) {
 			this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
 		}
+	}
+
+	async ngAfterViewInit() {
+		if (this.authService.isAutenticated()) {
+			this.usuarioSuscripcion = this.authService.usuarioEmmiter.subscribe((usuario) => {
+				this.email = usuario.email;
+			});
+		}
+	}
+
+	public logOut() {
+		this.confirmarLogOut();
+	}
+
+	async ngOnDestroy() {
+		this.usuarioSuscripcion.unsubscribe();
+	}
+
+
+	async confirmarLogOut() {
+		const alert = await this.alertController.create({
+			//   cssClass: 'my-custom-class',
+			header: 'Confirmar',
+			message: '¿Esta seguro de cerrar la sesión?',
+			buttons: [
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+					cssClass: 'secondary',
+					handler: (blah) => {
+					}
+				}, {
+					text: 'Aceptar',
+					handler: async () => {
+						await this.authService.logout();
+						this.router.navigate(['login']);
+					}
+				}
+			]
+		});
+
+		await alert.present();
 	}
 }
