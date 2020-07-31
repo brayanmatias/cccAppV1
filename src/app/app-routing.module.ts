@@ -39,6 +39,7 @@ const routes: Routes = [
 		path: 'albercas',
 		loadChildren: () => import('./albercas/albercas.module').then(m => m.AlbercasPageModule)
 	},
+<<<<<<< HEAD
   {
     path: 'mis-reservaciones',
     loadChildren: () => import('./mis-reservaciones/mis-reservaciones.module').then( m => m.MisReservacionesPageModule)
@@ -87,6 +88,8 @@ const routes: Routes = [
 >>>>>>> parent of c239586... Ultimos cambios eduardo
 =======
 >>>>>>> parent of c239586... Ultimos cambios eduardo
+=======
+>>>>>>> parent of 9a94314... Revert "Ultimos cambios edu"
 
 
 
