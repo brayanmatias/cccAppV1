@@ -42,4 +42,25 @@ export class Crud {
 	getComunicados() {
 		return this.http.get(this.api + '/comunicados/obtenerComunicados.php', {}, {});
 	}
+<<<<<<< HEAD
+=======
+
+
+	getAreas() {
+		return this.http.get(this.api + '/reservaciones/obtener-areas.php', {}, {});
+	}
+
+
+	getHorarios(idArea: Number, dia: string) {
+		return this.http.get(this.api + '/reservaciones/obtener-horarios.php?id=' + idArea + '&dia=' + dia, {}, {});
+	}
+
+
+	getIngresos(usuarioId: string) {
+		const fechaFin = FechaDate.fechaString(new Date());
+		const fechaInicio = FechaDate.fechaString(FechaDate.restaDias(new Date(), 7));
+		// tslint:disable-next-line: max-line-length
+		return this.http.get(this.api + '/ingresos/obtener-ingresos.php?id=' + usuarioId + '&fechaInicio=' + fechaInicio + '&fechaFin=' + fechaFin, {}, {});
+	}
+>>>>>>> parent of d2d9146... Avances
 }

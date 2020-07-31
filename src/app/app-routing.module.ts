@@ -29,6 +29,14 @@ const routes: Routes = [
 		path: 'reservaciones',
 		loadChildren: () => import('./reservaciones/reservaciones.module').then( m => m.ReservacionesPageModule)
 	},
+<<<<<<< HEAD
+=======
+	{
+		path: '',
+		redirectTo: 'login',
+		pathMatch: 'full'
+	}
+>>>>>>> parent of d2d9146... Avances
 
 
 	// {
