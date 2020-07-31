@@ -36,7 +36,11 @@ const routes: Routes = [
 	{
 		path: 'albercas',
 		loadChildren: () => import('./albercas/albercas.module').then(m => m.AlbercasPageModule)
-	},
+	},  {
+    path: 'mis-reservaciones',
+    loadChildren: () => import('./mis-reservaciones/mis-reservaciones.module').then( m => m.MisReservacionesPageModule)
+  },
+
 
 
 

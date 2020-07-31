@@ -1,41 +1,84 @@
-<app-header [logo]="true" [menu]="true" [mostrarToolBar]="true" [titulo]="'Comunicados'"></app-header>
+<app-header [logo]="false" [atras]="true" [mostrarToolBar]="true" [titulo]="'Crear Reservación'" [boton]="true" [iconBoton]="'calendar'"></app-header>
 
-<ion-content>
+<ion-content color="light">
   <form #formularioReservaciones="ngForm">
-    <ion-item>
-      <ion-label>Selecciona el area</ion-label>
-      <!-- [value]="peperoni" -->
-      <ion-select  placeholder="Selecciona un area" (ionChange)="changeArea($event)">
-        <ion-select-option value="golf">Golf</ion-select-option>
-        <ion-select-option value="tenis">Tenis</ion-select-option>
-        <ion-select-option value="alberca">Alberca</ion-select-option>
-      </ion-select>
-    </ion-item>
+    <ion-card mode="ios">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="select">
+              <ion-label>Selecciona el area</ion-label>
+              <ion-select  placeholder="Selecciona un area" (ionChange)="changeArea($event)" >
+                <ion-select-option value="{{area.id}}" *ngFor="let area of informacion.areas">{{area.area}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row id="golf" *ngIf="area == '1'" class="ion-justify-content-center">
+          <ion-col>
+            <ion-item class="select">
+              <ion-label>Selecciona el dia</ion-label>
+              <ion-select (ionChange)="changeDia($event)">
+                <ion-select-option value="{{dia.id}}" *ngFor="let dia of informacion.dias">{{dia.dia}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col size="12">
+            <ion-item class="select">
+              <ion-label>Selecciona el horario</ion-label>
+              <ion-select placeholder="Selecciona el horario" >
+                <ion-select-option value="horario.id" *ngFor="let horario of horarios">{{horario.inicio}} - {{horario.final}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
 
-    <section id="golf" *ngIf="area == 'golf'">
-      <ion-item>
-        <ion-label>Selecciona el dia</ion-label>
-        <ion-select  placeholder="Selecciona el dia">
-          <ion-select-option value="lunes">Lunes</ion-select-option>
-          <ion-select-option value="martes">Martes</ion-select-option>
-          <ion-select-option value="miercoles">Miercoles</ion-select-option>
-          <ion-select-option value="jueves">Jueves</ion-select-option>
-          <ion-select-option value="viernes">Viernes</ion-select-option>
-        </ion-select>
-      </ion-item>
+          <ion-col size="12">
+            <ion-item-divider color="custom" style="padding-top: 4px; padding-bottom: 4px;">
+              <ion-icon name="person-add" slot="start" style="margin-right: 6px;"></ion-icon>
+              <ion-label style="font-size: 17px;">Invitar socios</ion-label>
+            </ion-item-divider>
+          </ion-col>
+        
+          <ion-col size="12">
+            <ion-label class="text">Numero de Socio: </ion-label>
+            <ion-item class="select">
+              <ion-input name="number1"></ion-input>
+            </ion-item>
+          </ion-col>
 
-      <ion-item>
-        <ion-label>Selecciona el horario</ion-label>
-        <ion-select  placeholder="Selecciona el dia">
-          <ion-select-option value="lunes">Horario 1 7:00</ion-select-option>
-          <ion-select-option value="martes">Horario 2 7:15</ion-select-option>
-          <ion-select-option value="miercoles">Horario 3 7:30</ion-select-option>
-          <ion-select-option value="jueves">Horario 4 7:45</ion-select-option>
-          <ion-select-option value="viernes">Horario 5 8:00</ion-select-option>
-        </ion-select>
-      </ion-item>
-     
-    </section>
+          <ion-col size="12">
+            <ion-label class="text">Numero de Socio: </ion-label>
+            <ion-item class="select">
+              <ion-input name="number2"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-label class="text">Numero de Socio: </ion-label>
+            <ion-item class="select">
+              <ion-input name="number3"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-label class="text">Numero de Socio: </ion-label>
+            <ion-item class="select">
+              <ion-input name="number4"></ion-input>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col size="auto">
+            <ion-button color="custom" expand="block" fill="outline">
+              Guardar reservacion
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+   
+
 
     <section id="tenis">
 
