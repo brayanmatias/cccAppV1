@@ -3,6 +3,7 @@ import { LoginPageModule } from './login/login.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 const routes: Routes = [
 	{
@@ -45,6 +46,9 @@ const routes: Routes = [
 
 =======
 
+=======
+
+>>>>>>> parent of c239586... Ultimos cambios eduardo
 const routes: Routes = [
 	{
 		path: 'login',
@@ -79,6 +83,9 @@ const routes: Routes = [
 		path: 'albercas',
 		loadChildren: () => import('./albercas/albercas.module').then(m => m.AlbercasPageModule)
 	},
+<<<<<<< HEAD
+>>>>>>> parent of c239586... Ultimos cambios eduardo
+=======
 >>>>>>> parent of c239586... Ultimos cambios eduardo
 
 

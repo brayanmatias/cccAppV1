@@ -12,5 +12,11 @@ export class ReservacionesPage implements OnInit {
   ngOnInit() {
   }
 
+<<<<<<< HEAD
+=======
+  changeArea(event) {
+    this.area = event.detail.value;
+  }
+>>>>>>> parent of c239586... Ultimos cambios eduardo
 
 }
