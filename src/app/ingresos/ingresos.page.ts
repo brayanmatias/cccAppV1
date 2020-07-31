@@ -39,12 +39,12 @@ export class IngresosPage extends BaseComponent implements OnInit {
 	public async obtenerIngresos(usuarioId: string) {
 		const nombreMetodo = 'obtenerIngresos';
 		console.log(`[${this.nombreClase}][${nombreMetodo}] Incializando componente...`);
-		try {
-			const respuesta = await this.crud.getIngresos(usuarioId);
-			this.ingresos = JSON.parse(respuesta.data);
-		} catch (error) {
-			this.toastr.error('Error', 'Error al obtener ingresos');
-		}
+		// try {
+		// 	const respuesta = await this.crud.getIngresos(usuarioId);
+		// 	this.ingresos = JSON.parse(respuesta.data);
+		// } catch (error) {
+		// 	this.toastr.error('Error', 'Error al obtener ingresos');
+		// }
 	}
 
 }

@@ -42,4 +42,17 @@ export class Crud {
 	getComunicados() {
 		return this.http.get(this.api + '/comunicados/obtenerComunicados.php', {}, {});
 	}
+
+	getHorarios(data) {
+		this.http.setDataSerializer('json');
+		return this.http.post(this.api + '/reservaciones/obtener-horarios.php', data, this.header);
+	}
+
+	getReservaciones(idSocio){
+		return this.http.get(this.api + '/reservaciones/obtener-reservaciones.php?id_socio=' + idSocio, {}, {});
+	}
+
+	getInformacion() {
+		return this.http.get(this.api + '/reservaciones/obtener-areas.php', {}, {});
+	}
 }

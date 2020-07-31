@@ -27,15 +27,21 @@ const routes: Routes = [
 	},
 	{
 		path: 'reservaciones',
-		loadChildren: () => import('./reservaciones/reservaciones.module').then( m => m.ReservacionesPageModule)
+		loadChildren: () => import('./reservaciones/reservaciones.module').then(m => m.ReservacionesPageModule)
 	},
-
-
-	// {
-	// 	path: '',
-	// 	redirectTo: 'login',
-	// 	pathMatch: 'full'
-	// },
+	{
+		path: 'mis-reservaciones',
+		loadChildren: () => import('./mis-reservaciones/mis-reservaciones.module').then(m => m.MisReservacionesPageModule)
+	},
+	{
+		path: 'detalle-comunicado',
+		loadChildren: () => import('./detalle-comunicado/detalle-comunicado.module').then(m => m.DetalleComunicadoPageModule)
+	},
+	{
+		path: '',
+		redirectTo: 'login',
+		pathMatch: 'full'
+	},
 
 ];
 

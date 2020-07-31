@@ -21,9 +21,9 @@ export class PerfilSocioPage extends BaseComponent implements OnInit {
 	}
 
 	public async obtenerSocio() {
-		const usuario = await this.auth.getCurrentUser();
-		const respuesta = await this.crud.getPerfilSocio(usuario.usuario_id);
-		console.log(JSON.stringify(respuesta.data));
+		// const usuario = await this.auth.getCurrentUser();
+		// const respuesta = await this.crud.getPerfilSocio(usuario.usuario_id);
+		// console.log(JSON.stringify(respuesta.data));
 	}
 
 
