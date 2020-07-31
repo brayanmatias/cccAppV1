@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetalleComunicadoPageRoutingModule } from './detalle-comunicado-routing.module';
+import { AlbercasPageRoutingModule } from './albercas-routing.module';
 
-import { DetalleComunicadoPage } from './detalle-comunicado.page';
+import { AlbercasPage } from './albercas.page';
 import { ComponentesReutilizablesModule } from '../componentes-reutilizables/componentes-reutilizables.module';
 
 @NgModule({
@@ -15,8 +15,8 @@ import { ComponentesReutilizablesModule } from '../componentes-reutilizables/com
     FormsModule,
     IonicModule,
     ComponentesReutilizablesModule,
-    DetalleComunicadoPageRoutingModule
+    AlbercasPageRoutingModule
   ],
-  declarations: [DetalleComunicadoPage]
+  declarations: [AlbercasPage]
 })
-export class DetalleComunicadoPageModule {}
+export class AlbercasPageModule {}

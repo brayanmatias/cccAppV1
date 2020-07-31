@@ -1,4 +1,4 @@
-<app-header [logo]="true" [menu]="true" [mostrarToolBar]="true" [titulo]="'Comunicados'"></app-header>
+<app-header [logo]="true" [menu]="false" [atras]="true" [mostrarToolBar]="true" [titulo]="'Comunicados'"></app-header>
 
 <ion-content color="light">
   <ion-card mode="ios" *ngFor="let comunicado of comunicados">
@@ -21,9 +21,19 @@
               <ion-label style="font-size: 16px;" *ngIf="comunicado.description.length > 70">
                 {{comunicado.description.substring(0,85)}} ...
               </ion-label>
+
+              <ion-label style="font-size: 16px;" *ngIf="comunicado.description.length < 70">
+                
+                {{comunicado.description}}
+              </ion-label>
             </ion-col>
           </ion-row>
-          
+
+          <ion-row>
+            <ion-button color="custom" (click)="details(comunicado)">
+              Ver detalles
+            </ion-button>
+          </ion-row>          
         </ion-col>
       </ion-row>
     </ion-grid>

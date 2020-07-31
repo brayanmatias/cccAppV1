@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Crud } from '../../services/crud.service';
+import { Comunicado } from '../clases/comunicado';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-comunicados',
@@ -8,7 +10,7 @@ import { Crud } from '../../services/crud.service';
 })
 export class ComunicadosPage implements OnInit {
   comunicados: any[] = [];
-  constructor(private crudService: Crud) { }
+  constructor(private crudService: Crud, private router: Router) { }
 
   ngOnInit() {
     this.loadData();
@@ -21,5 +23,15 @@ export class ComunicadosPage implements OnInit {
       console.error(JSON.stringify(e));
     });
   }
+
+  details(comunicado: Comunicado) {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        comunicado
+      }
+    };
+    this.router.navigate(['/detalle-comunicado'], navigationExtras);
+  }
+
 
 }

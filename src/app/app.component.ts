@@ -30,6 +30,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 			icon: 'bookmark'
 		},
 		{
+			title: 'Alberca',
+			url: '/albercas',
+			icon: 'thermometer'
+		},
+		{
 			title: 'Reservaciones',
 			url: '/reservaciones',
 			icon: 'book'

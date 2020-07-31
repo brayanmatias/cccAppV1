@@ -55,4 +55,8 @@ export class Crud {
 	getInformacion() {
 		return this.http.get(this.api + '/reservaciones/obtener-areas.php', {}, {});
 	}
+
+	getTemperaturas() {
+		return this.http.get(this.api + '/albercas/obtenerTemperaturas.php', {}, {});
+	}
 }

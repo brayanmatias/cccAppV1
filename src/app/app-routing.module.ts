@@ -41,7 +41,11 @@ const routes: Routes = [
 		path: '',
 		redirectTo: 'login',
 		pathMatch: 'full'
-	},
+	},  {
+    path: 'albercas',
+    loadChildren: () => import('./albercas/albercas.module').then( m => m.AlbercasPageModule)
+  },
+
 
 ];
 
