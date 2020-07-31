@@ -2,6 +2,7 @@ import { ValidacionUsuarioPageModule } from './validacion-usuario/validacion-usu
 import { LoginPageModule } from './login/login.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from 'src/services/auth-guard.service';
 
 const routes: Routes = [
 	{
@@ -41,10 +42,20 @@ const routes: Routes = [
 		path: '',
 		redirectTo: 'login',
 		pathMatch: 'full'
-	},  {
-    path: 'albercas',
-    loadChildren: () => import('./albercas/albercas.module').then( m => m.AlbercasPageModule)
-  },
+	},
+	{
+		path: 'albercas',
+		loadChildren: () => import('./albercas/albercas.module').then(m => m.AlbercasPageModule)
+	},
+	{
+		path: 'ingresos',
+		loadChildren: () => import('./ingresos/ingresos.module').then(m => m.IngresosPageModule)
+	},
+	{
+		path: 'inicio',
+		canActivate: [AuthGuardService],
+		loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioPageModule)
+	},
 
 
 ];

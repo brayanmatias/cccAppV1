@@ -88,6 +88,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 	async ngAfterViewInit() {
 		if (this.authService.isAutenticated()) {
+			const usuario = await this.authService.getCurrentUser();
+			this.email = usuario.email;
 			this.usuarioSuscripcion = this.authService.usuarioEmmiter.subscribe((usuario) => {
 				this.email = usuario.email;
 			});
