@@ -22,13 +22,9 @@ export class HeaderComponent implements OnInit {
 		this.mostrarToolBar = false;
 		this.menu = false;
 		this.atras = false;
-<<<<<<< HEAD
 		this.logo = true;
 		this.boton = false;
 		this.iconBoton = '';
-=======
-		this.logo = false;
->>>>>>> 9a94314e0879b446926597e3245407cd9529fe27
 	}
 
 	ngOnInit() {
