@@ -22,11 +22,6 @@ const routes: Routes = [
 		loadChildren: () => import('./comunicados/comunicados.module').then(m => m.ComunicadosPageModule)
 	},
 	{
-		path: 'inicio',
-		// canActivate: isAute,
-		loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioPageModule)
-	},
-	{
 		path: 'reservaciones',
 		loadChildren: () => import('./reservaciones/reservaciones.module').then(m => m.ReservacionesPageModule)
 	},
@@ -56,6 +51,10 @@ const routes: Routes = [
 		canActivate: [AuthGuardService],
 		loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioPageModule)
 	},
+	{
+		path: 'perfil-socio',
+		loadChildren: () => import('./perfil-socio/perfil-socio.module').then(m => m.PerfilSocioPageModule)
+	}
 
 
 ];

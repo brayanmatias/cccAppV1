@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Socio } from 'src/app/clases/socio';
 import { UsuarioApp } from '../app/clases/usuario.app';
+import { FechaDate } from 'src/utilidades/fechas';
 
 @Injectable()
 export class Crud {
@@ -58,5 +59,16 @@ export class Crud {
 
 	getTemperaturas() {
 		return this.http.get(this.api + '/albercas/obtenerTemperaturas.php', {}, {});
+	}
+
+	getPerfilSocio(usuarioId: string) {
+		return this.http.get(this.api + '/socio/obtener-perfil-socio.php?id=' + usuarioId, {}, {});
+	}
+
+	getIngresos(usuarioId: string) {
+		const fechaFin = FechaDate.fechaString(new Date());
+		const fechaInicio = FechaDate.fechaString(FechaDate.restaDias(new Date(), 7));
+		// tslint:disable-next-line: max-line-length
+		return this.http.get(this.api + '/ingresos/obtener-ingresos.php?id=' + usuarioId + '&fechaInicio=' + fechaInicio + '&fechaFin=' + fechaFin, {}, {});
 	}
 }
