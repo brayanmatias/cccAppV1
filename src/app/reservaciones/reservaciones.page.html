@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <app-header [logo]="false" [atras]="true" [mostrarToolBar]="true" [titulo]="'Crear Reservación'" [boton]="true" [iconBoton]="'calendar'"></app-header>
 
 <ion-content color="light">
@@ -85,7 +86,30 @@
     </section>
 
     <section id="alberca">
+=======
+<app-header [menu]="true" [mostrarToolBar]="true" [titulo]="'Reservaciones'"></app-header>
+<ion-content>
+	<form #formularioReservaciones="ngForm">
+		<ion-item>
+			<ion-label>Selecciona el area</ion-label>
+			<ion-select placeholder="Selecciona un area" (ionChange)="changeArea($event)">
+				<ion-select-option [value]="area.id" *ngFor="let area of listaAreas">{{area.area}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label>Selecciona el dia</ion-label>
+			<ion-select placeholder="Selecci" (ionChange)="changeDia($event)">
+				<ion-select-option [value]="dia" *ngFor="let dia of dias">{{dia}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+>>>>>>> 9a94314e0879b446926597e3245407cd9529fe27
 
-    </section>
-  </form>
+		<ion-item>
+			<ion-label>Selecciona el horario</ion-label>
+			<ion-select placeholder="Selecci" (ionChange)="changeArea($event)">
+				<ion-select-option [value]="horario.hora" *ngFor="let horario of horarios">{{horario.title}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+	</form>
 </ion-content>

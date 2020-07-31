@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-	<ion-toolbar *ngIf="mostrarToolBar" color="custom">
+	<ion-toolbar *ngIf="mostrarToolBar">
 		<ion-buttons slot="start">
 			<ion-menu-button *ngIf="menu"></ion-menu-button>
 			<ion-back-button *ngIf="atras" [defaultHref]="rutaRegresar"></ion-back-button>
@@ -13,4 +13,4 @@
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
-<ion-img src="./assets/images/logo_ccc.png" class="logo" *ngIf="logo"></ion-img>
+<!-- <ion-img src="./assets/images/logo_ccc.png" class="logo" *ngIf="logo"></ion-img> -->

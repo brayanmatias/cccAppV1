@@ -1,0 +1,48 @@
+<app-header [mostrarToolBar]="true" [titulo]="'Ingresos'" [logo]="false" [menu]="true">
+</app-header>
+
+<ion-content>
+	<ion-grid>
+		<div *ngIf="ingresos.length > 0">
+			<ion-row class="header-row" style="font-weight: bold;">
+				<ion-col size="3">
+					Fecha
+				</ion-col>
+				<ion-col size="3">
+					Hora
+				</ion-col>
+				<ion-col size="3">
+					Puerta
+				</ion-col>
+				<ion-col size="3">
+					Tipo ingreso
+				</ion-col>
+			</ion-row>
+
+			<ion-row *ngFor="let ingreso of ingresos">
+				<ion-col size="3">
+					{{ingreso.Fecha}}
+				</ion-col>
+				<ion-col size="3">
+					{{ingreso.Hora}}
+				</ion-col>
+				<ion-col size="3">
+					{{ingreso.Puerta}}
+				</ion-col>
+				<ion-col size="3">
+					{{ingreso.TipoIngreso}}
+				</ion-col>
+			</ion-row>
+		</div>
+		<ion-row *ngIf="ingresos.length === 0" class="ion-text-center animate__animated animate__bounceInLeft">
+			<ion-col size="12">
+				<ion-badge color="secondary">
+					<h5>
+						No se encontraron ingresos
+					</h5>
+				</ion-badge>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>

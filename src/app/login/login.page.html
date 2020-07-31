@@ -1,7 +1,7 @@
-<app-header [mostrarToolBar]="false" [logo]="true"></app-header>
+<app-header [mostrarToolBar]="false"></app-header>
 <ion-content>
 	<ion-grid class="ion-margin-vertical">
-		<form #formularioLogin="ngForm">
+		<form #formularioLogin="ngForm" (ngSubmit)="validar()" (keyup.enter)="validar()">
 			<ion-row>
 				<ion-col size="12">
 					<ion-item>
@@ -21,8 +21,8 @@
 				<ion-col size="12">
 					<ion-item>
 						<ion-label position="floating">Contraseña:</ion-label>
-						<ion-input name="contrasena" type="password" [(ngModel)]="usuario.contrasena" #contrasenaInp="ngModel"
-							required>
+						<ion-input name="contrasena" type="password" [(ngModel)]="usuario.contrasena"
+							#contrasenaInp="ngModel" clearOnEdit="false" enterkeyhint="enter" required>
 						</ion-input>
 					</ion-item>
 					<ion-label color="danger" class="ion-margin-horizontal" *ngIf="existeError(contrasenaInp)">
@@ -33,8 +33,8 @@
 		</form>
 		<ion-row>
 			<ion-col offset="1" size="10" class="ion-text-center">
-				<ion-button color="warning" shape="round" expand="full" class="ion-text-capitalize" (click)="validar()"
-					[disabled]="formularioLogin.invalid">Ingresar</ion-button>
+				<ion-button type="submit" color="warning" shape="round" expand="full" class="ion-text-capitalize"
+					(click)="validar()" [disabled]="formularioLogin.invalid">Ingresar</ion-button>
 			</ion-col>
 		</ion-row>
 		<ion-row>

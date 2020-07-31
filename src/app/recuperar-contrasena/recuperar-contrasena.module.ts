@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AlbercasPageRoutingModule } from './albercas-routing.module';
+import { RecuperarContrasenaPageRoutingModule } from './recuperar-contrasena-routing.module';
 
-import { AlbercasPage } from './albercas.page';
+import { RecuperarContrasenaPage } from './recuperar-contrasena.page';
 import { ComponentesReutilizablesModule } from '../componentes-reutilizables/componentes-reutilizables.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentesReutilizablesModule } from '../componentes-reutilizables/com
     CommonModule,
     FormsModule,
     IonicModule,
-    ComponentesReutilizablesModule,
-    AlbercasPageRoutingModule
+    RecuperarContrasenaPageRoutingModule,
+    ComponentesReutilizablesModule
   ],
-  declarations: [AlbercasPage]
+  declarations: [RecuperarContrasenaPage]
 })
-export class AlbercasPageModule {}
+export class RecuperarContrasenaPageModule {}

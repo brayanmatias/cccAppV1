@@ -11,13 +11,19 @@
 			</ion-header>
 			<ion-content>
 				<ion-list id="listaMenu">
-					<ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-						<ion-item (click)="selectedIndex = i" routerDirection="forward" [routerLink]="[p.url]" lines="none"
-							detail="false" [class.selected]="selectedIndex == i">
-							<ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-							<ion-label>{{ p.title }}</ion-label>
+					<ion-menu-toggle auto-hide="false" *ngFor="let page of appPages; let i = index">
+						<ion-item (click)="selectedIndex = i" routerDirection="forward" [routerLink]="[page.url]"
+							lines="none" detail="false" [class.selected]="selectedIndex == i">
+							<ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'">
+							</ion-icon>
+							<ion-label>{{ page.title }}</ion-label>
 						</ion-item>
 					</ion-menu-toggle>
+					<ion-item lines="none" detail="false" (click)="logOut()">
+						<ion-icon slot="start" [ios]="'exit-outline'" [md]="'exit-sharp'">
+						</ion-icon>
+						<ion-label>Cerrar sesión</ion-label>
+					</ion-item>
 				</ion-list>
 			</ion-content>
 		</ion-menu>

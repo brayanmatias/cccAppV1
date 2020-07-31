@@ -1,3 +1,4 @@
+import { AutenticacionService } from 'src/services/autenticacion.service';
 import { MenuController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
-	constructor(private menuController: MenuController) { }
+	constructor(private menuController: MenuController, private auth: AutenticacionService) { }
 
-	ngOnInit() {
+	async ngOnInit() {
 		this.menuController.enable(true);
+		const usuario = await this.auth.getCurrentUser();
+		this.auth.usuarioEmmiter.emit(usuario);
 	}
 
 }
