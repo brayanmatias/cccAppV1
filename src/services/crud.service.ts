@@ -46,17 +46,4 @@ export class Crud {
 	getTemperaturas() {
 		return this.http.get(this.api + '/albercas/obtenerTemperaturas.php', {}, {});
 	}
-
-	getHorarios(data) {
-		this.http.setDataSerializer('json');
-		return this.http.post(this.api + '/reservaciones/obtener-horarios.php', data, this.header);
-	}
-
-	getReservaciones(idSocio){
-		return this.http.get(this.api + '/reservaciones/obtener-reservaciones.php?id_socio=' + idSocio, {}, {});
-	}
-
-	getInformacion() {
-		return this.http.get(this.api + '/reservaciones/obtener-areas.php', {}, {});
-	}
 }
